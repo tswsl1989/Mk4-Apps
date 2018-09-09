@@ -19,7 +19,7 @@ They also *may*:
 ___license___      = "MIT"
 ___dependencies___ = ["database", "buttons", "app", "sleep", "ugfx_helper", "wifi", "sim800"]
 
-import database, ugfx, random, buttons, tilda, sleep, ugfx_helper, wifi, time, sim800
+import database, ugfx, random, buttons, tilda, sleep, ugfx_helper, wifi, time, sim800, sys
 from app import App
 
 _state = None
@@ -52,6 +52,11 @@ def sleep_or_exit(interval = 0.5):
     if buttons.is_triggered(tilda.Buttons.BTN_Menu):
         clean_up()
         App("launcher").boot()
+    if buttons.is_pressed(tilda.Buttons.BTN_A) and buttons.is_pressed(tilda.Buttons.BTN_B):
+        ugfx.clear()
+        ugfx.Label(5, 10, 240, 130, "Dropping to REPL - reset badge to return to normal operation")
+        clean_up()
+        sys.exit()
     sleep.sleep(interval)
 
 
