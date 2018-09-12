@@ -51,10 +51,10 @@ def mode_buttons():
         if is_triggered(Buttons.BTN_Menu):
             return
         if is_triggered(Buttons.JOY_Up):
-            octave = min(6, max(0, octave+1))
+            octave = min(9, max(1, octave+1))
             render_ui()
         if is_triggered(Buttons.JOY_Down):
-            octave = min(6, max(0, octave-1))
+            octave = min(9, max(1, octave-1))
             render_ui()
 
 def render_ui():
